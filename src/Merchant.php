@@ -44,14 +44,14 @@ class Merchant extends BaseObject
     {
         $relatedModel = $this->getRelatedModel();
 
-        $invoice = PaykeeperInvoice::findOne(['related_id' => $orderID . '-' . $relatedModel, 'related_model' => $relatedModel]);
+        $invoice = PaykeeperInvoice::findOne(['related_id' => $orderID, 'related_model' => $relatedModel]);
 
         if ($invoice) {
             return Yii::$app->response->redirect($invoice->url);
         }
 
         $data = [
-            'orderid' => $orderID . '-' . $relatedModel,
+            'orderid' => $orderID,
             'pay_amount' => $sum,
             'service_name' => '',
         ];

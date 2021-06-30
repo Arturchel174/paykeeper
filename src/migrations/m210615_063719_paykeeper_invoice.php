@@ -14,7 +14,7 @@ class m210615_063719_paykeeper_invoice extends Migration
     {
         $this->createTable('paykeeper_invoice', [
             'id' => $this->primaryKey(),
-            'related_id' => $this->string()->null(),
+            'related_id' => $this->integer()->null(),
             'related_model' => $this->string()->null(),
             'created_at' => $this->integer(),
             'paid_at' => $this->integer(),
