@@ -26,6 +26,7 @@ php composer.phar require akhur0286/yii2-paykeeper "*"
             'class' => 'akhur0286\paykeeper\Merchant',
             'merchantLogin' => '',
             'merchantPassword' => '',
+            'serverUrl' => '',
             'orderModel' => '', //модель таблицы заказов
         ],
         //..
