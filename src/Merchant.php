@@ -47,7 +47,7 @@ class Merchant extends BaseObject
         $invoice = PaykeeperInvoice::findOne(['related_id' => $orderID, 'related_model' => $relatedModel]);
 
         if ($invoice) {
-            return Yii::$app->response->redirect($invoice->url);
+            return $invoice->url;
         }
 
         $data = [
@@ -88,7 +88,7 @@ class Merchant extends BaseObject
 
         PaykeeperInvoice::add($orderID, $this->relatedModel, $invoiceID, $formUrl, $data);
 
-        return Yii::$app->response->redirect($formUrl);
+        return $formUrl;
     }
 
     /**
