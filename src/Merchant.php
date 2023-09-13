@@ -10,6 +10,7 @@ use yii\base\InvalidConfigException;
 use yii\helpers\Json;
 use yii\helpers\Url;
 use yii\web\Response;
+use yii\helpers\StringHelper;
 
 class Merchant extends BaseObject
 {
@@ -138,6 +139,6 @@ class Merchant extends BaseObject
 
     public function getRelatedModel()
     {
-        return strtolower(yii\helpers\StringHelper::basename($this->orderModel));
+        return strtolower(StringHelper::basename($this->orderModel));
     }
 }
