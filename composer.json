@@ -1,5 +1,5 @@
 {
-    "name": "akhur0286/yii2-paykeeper",
+    "name": "arturchel174/yii2-paykeeper",
     "description": "Библиотека для приема платежей через Сбербанк.",
     "type": "yii2-extension",
     "keywords": ["yii2","extension","paykeeper"],
