@@ -35,10 +35,10 @@ class BaseAction extends Action
      */
     public function run()
     {
-        if (!isset($_REQUEST['orderId'])) {
+        if (!isset($_REQUEST['orderid'])) {
             throw new BadRequestHttpException;
         }
 
-        return $this->callback($_REQUEST['orderId']);
+        return $this->callback($_REQUEST);
     }
 }
