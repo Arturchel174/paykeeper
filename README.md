@@ -16,6 +16,10 @@ php composer.phar require akhur0286/yii2-paykeeper "*"
 "akhur0286/yii2-paykeeper": "*"
 ```
 
+```
+php yii migrate --migrationPath=vendor/arturchel174/yii2-paykeeper/src/migrations
+```
+
 Подключение компонента
 -----
 

@@ -14,7 +14,7 @@ use function is_array;
  * This is the model class for table "paykeeper_invoice".
  *
  * @property int $id
- * @property int $related_id
+ * @property string $related_id
  * @property string $related_model
  * @property string $invoice_id
  * @property int $created_at
@@ -38,9 +38,10 @@ class PaykeeperInvoice extends ActiveRecord
     public function rules()
     {
         return [
-            [['related_id', 'created_at', 'paid_at'], 'integer'],
+            [['created_at', 'paid_at'], 'integer'],
             [['related_id', 'related_model'], 'required'],
             [['invoice_id'], 'string'],
+            [['related_id'], 'string', 'max' => 36],
             [['data'], 'safe'],
             [['url'], 'string', 'max' => 255],
         ];

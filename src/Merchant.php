@@ -84,6 +84,29 @@ class Merchant extends BaseObject
     }
 
     /**
+     * @throws ErrorException
+     */
+    public function revoke(int $invoice_id)
+    {
+        $response = $this->sendGet('/info/settings/token/', []);
+
+        if (!$response || !isset($response['token'])) {
+            throw new ErrorException('Возникла ошибка при получении токена');
+        }
+
+        $data['token'] = $response['token'];
+        $data['id'] = $invoice_id;
+
+        $response = $this->sendPost( '/change/invoice/revoke/', $data);
+
+        if (!$response || !isset($response['result'])) {
+            throw new ErrorException('Возникла ошибка при отмене');
+        }
+
+        return $response['result'] === 'success';
+    }
+
+    /**
      * Откправка запроса в api сбербанка
      * @param $action string типа запрос
      * @param $data array Параметры которые передаём в запрос
