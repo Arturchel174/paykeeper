@@ -86,7 +86,7 @@ class Merchant extends BaseObject
     /**
      * @throws ErrorException
      */
-    public function revoke(int $invoice_id)
+    public function revoke(string $invoice_id)
     {
         $response = $this->sendGet('/info/settings/token/', []);
 
@@ -102,8 +102,12 @@ class Merchant extends BaseObject
         if (!$response || !isset($response['result'])) {
             throw new ErrorException('Возникла ошибка при отмене');
         }
+        
+        if($response['result'] === 'success'){
+            return PaykeeperInvoice::del($invoice_id);
+        }
 
-        return $response['result'] === 'success';
+        return false;
     }
 
     /**

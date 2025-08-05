@@ -6,6 +6,7 @@ use pantera\yii2\pay\sberbank\Module;
 use Yii;
 use yii\base\InvalidParamException;
 use yii\db\ActiveRecord;
+use yii\db\StaleObjectException;
 use yii\helpers\Json;
 use function call_user_func;
 use function is_array;
@@ -93,6 +94,20 @@ class PaykeeperInvoice extends ActiveRecord
         $model->data = $data;
         $model->save();
         return $model;
+    }
+
+    /**
+     * @throws \Throwable
+     * @throws StaleObjectException
+     */
+    public static function del(string $invoiceID)
+    {
+        $model = self::findOne(['invoice_id' => $invoiceID]);
+        if ($model) {
+            return $model->delete();
+        }
+
+        return false;
     }
 
     public static function getInvoiceID($relatedID, $relatedModel)
